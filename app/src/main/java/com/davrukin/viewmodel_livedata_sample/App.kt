@@ -1,0 +1,28 @@
+package com.davrukin.viewmodel_livedata_sample
+
+import android.app.Activity
+import android.app.Application
+import com.davrukin.viewmodel_livedata_sample.db.RoomDatabaseWord
+import com.davrukin.viewmodel_livedata_sample.db.repo.RepositoryWord
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+
+class App : Application() {
+
+	// No need to cancel this scope as it'll be torn down with the process
+	val applicationScope = CoroutineScope(SupervisorJob())
+
+	// Using by lazy so the database and the repository are only created when they're needed
+	// rather than when the application starts
+	val db by lazy { RoomDatabaseWord.getDatabase(this, applicationScope) }
+	val repoWord by lazy { RepositoryWord(db.daoWord()) }
+
+	companion object {
+
+		@JvmStatic
+		fun Activity.getApp(): App {
+			return application as App
+		}
+
+	}
+}
