@@ -36,7 +36,7 @@ class SelectionFragment : Fragment() {
 			findNavController().navigate(R.id.mainFragment)
 		}
 
-		binding.buttonOther.setOnClickListener {
+		binding.buttonPaging.setOnClickListener {
 			//findNavController().navigate(R.id.composeFragment)
 		}
 	}
