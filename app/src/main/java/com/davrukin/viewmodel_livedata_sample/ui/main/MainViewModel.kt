@@ -25,6 +25,10 @@ class MainViewModel(private val repo: RepositoryWord) : ViewModel() {
 		repo.insert(word)
 	}
 
+	fun deleteAllWords() = viewModelScope.launch {
+		repo.deleteAllWords()
+	}
+
 	override fun onCleared() {
 		viewModelScope.cancel("calling onCleared()")
 		super.onCleared()

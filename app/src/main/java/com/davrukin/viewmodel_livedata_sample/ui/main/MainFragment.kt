@@ -71,7 +71,12 @@ class MainFragment : Fragment() {
 			val text = editWord.text.toString()
 			val word = Word(text)
 			viewModel.insert(word)
-			editWord.setText("", TextView.BufferType.EDITABLE)
+			editWord.setText("", TextView.BufferType.EDITABLE) // clears the text field
+		}
+
+		binding.deleteWords.setOnClickListener {
+			Log.d("MainFragment", "clicked deleteWords")
+			viewModel.deleteAllWords()
 		}
 	}
 }
