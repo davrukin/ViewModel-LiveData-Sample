@@ -17,10 +17,6 @@ import com.davrukin.viewmodel_livedata_sample.db.model.Word
 
 class MainFragment : Fragment() {
 
-	companion object {
-		fun newInstance() = MainFragment()
-	}
-
 	private val viewModel: MainViewModel by viewModels {
 		MainViewModelFactory(activity?.getApp()?.repoWord)
 	}
